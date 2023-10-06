@@ -15,9 +15,12 @@ $ npm init -y
 ## Configurando o TypeScript
 
 - Site oficial do TypeScript [https://typescriptlang.org]
-- Para instalar a lib `typeScript` como dependência de desenvolvimento digite o seguinte comando:
+- Para instalar as libs `typescript`, `@types/node` e `tsx` como dependência de desenvolvimento digite o seguinte comando:
+  - _Onde `typescript` é a lib principal._
+  - _`@types/node` é a lib de tipos._
+  - _e `tsx` é a lib que automatiza a conversão dos arquivos TypeScript para JavaScript._
 ```
-$ npm i -D typescript
+$ npm i -D typescript @types/node tsx
 ```
 - Para criar o arquivo de configurações do `typescript` chamado `tsconfig.json` digite o seguinte comando:
   - _Esse comando automatiza a criação do arquivo._
@@ -29,6 +32,16 @@ $ npx tsc --init
 ```
 $ npx tsc src/index.ts
 ```
+- Para executar um arquivo `typescript` diretamente sem precisar converter para `javascript`, digite o seguinte comando:
+```
+$ npx tsx src/server.ts
+```
+
+## Configurando o Fastify
+- Para instalar a lib `fastify` digite o seguinte comando:
+```
+$ npm i fastify
+```
 
 ## Como Executar
 
@@ -37,4 +50,12 @@ $ npx tsc src/index.ts
 - Faça o clone do projeto
 ```
 $ git clone https://github.com/fabiosvf/trilha-nodejs-projeto-02.git .
+```
+- Instale as dependências do projeto
+```
+$ npm i
+```
+- Execute o serviço
+```
+$ npm run dev
 ```
