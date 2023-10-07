@@ -99,6 +99,14 @@ $ npm run knex -- migrate:rollback
 $ npm i dotenv
 ```
 
+## Trabalhando com Validação de Dados
+- Repositório Oficial do `zod` no GitHub [https://github.com/colinhacks/zod]
+- Instale a lib `zod` como dependência de produção, para isso digite o comando:
+```
+$ npm i zod
+```
+- Neste primeiro momento iremos utilizar a validação no arquivo `./src/env/index.ts`
+
 ## Como Executar
 
 - Crie uma pasta para o projeto
