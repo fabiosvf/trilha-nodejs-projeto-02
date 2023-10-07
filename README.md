@@ -50,11 +50,36 @@ $ npm i -D eslint @rocketseat/eslint-config
 ```
 - Crie o arquivo `.eslintrc.json` na raiz do projeto, onde ficarão as configurações
 - Instale a extensão `ESLint` (Publisher Microsoft) no VS Code
+- No arquivo `settings.json` do VSCode, certifique-se de existir a seguinte configuração:
+```json
+"[javascript]": {
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+},
+"[typescript]": {
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+},
+```
 
 ## Configurando um Banco de Dados Relacional
+- Site Oficial do Knex.js [https://knexjs.org/guide/]
 - Para instalar o Query Builder `Knex.js` e o driver do Banco de Dados `SQLite` como dependência de produção, digite o comando:
 ```
 $ npm install knex sqlite3
+```
+
+## Criando uma Migrate
+- Crie o arquivo de configuração `knexfile.ts` na raiz do projeto
+- Para o `knex` entender typescript para a criação de migrations, será necessário utilizar o script `knex` criado no arquivo `package.json`
+- Agora, para executar a criação de uma migration digite o comando:
+  - _onde `create-documents` é o nome da migration que está sendo criada._
+```
+$ npm run knex -- migrate:make create-documents
 ```
 
 ## Como Executar
