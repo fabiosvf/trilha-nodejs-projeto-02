@@ -51,6 +51,12 @@ $ npm i -D eslint @rocketseat/eslint-config
 - Crie o arquivo `.eslintrc.json` na raiz do projeto, onde ficarão as configurações
 - Instale a extensão `ESLint` (Publisher Microsoft) no VS Code
 
+## Configurando um Banco de Dados Relacional
+- Para instalar o Query Builder `Knex.js` e o driver do Banco de Dados `SQLite` como dependência de produção, digite o comando:
+```
+$ npm install knex sqlite3
+```
+
 ## Como Executar
 
 - Crie uma pasta para o projeto
