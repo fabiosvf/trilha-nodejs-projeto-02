@@ -91,6 +91,14 @@ $ npm run knex -- migrate:latest
 $ npm run knex -- migrate:rollback
 ```
 
+## Configurando as Variáveis de Ambiente
+- Crie o arquivo `.env` na raiz do projeto
+- Instale a extensão `DotENV` (Publisher mikestead)
+- Instale a lib `dotenv` como dependência de produção para poder ler o arquivo de configuração, para isso digite o comando:
+```
+$ npm i dotenv
+```
+
 ## Como Executar
 
 - Crie uma pasta para o projeto
