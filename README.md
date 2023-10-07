@@ -77,9 +77,18 @@ $ npm install knex sqlite3
 - Crie o arquivo de configuração `knexfile.ts` na raiz do projeto
 - Para o `knex` entender typescript para a criação de migrations, será necessário utilizar o script `knex` criado no arquivo `package.json`
 - Agora, para executar a criação de uma migration digite o comando:
-  - _onde `create-documents` é o nome da migration que está sendo criada._
+  - _onde `create-transactions` é o nome da migration que está sendo criada._
 ```
-$ npm run knex -- migrate:make create-documents
+$ npm run knex -- migrate:make create-transactions
+```
+- Para executar uma migration digite o comando:
+```
+$ npm run knex -- migrate:latest
+```
+- Para desfazer uma migration digite o comando:
+  - _apenas execute esse comando se a migration NÃO foi comitada no repositório da equipe._
+```
+$ npm run knex -- migrate:rollback
 ```
 
 ## Como Executar
