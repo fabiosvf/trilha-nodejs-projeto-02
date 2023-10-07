@@ -43,6 +43,14 @@ $ npx tsx src/server.ts
 $ npm i fastify
 ```
 
+## Configurando o Eslint
+- Para instalar as libs `eslint` e `@rocketseat/eslint-config` (pré set de configurações da Rocketseat) como dependência de desenvolvimento, digite o comando:
+```
+$ npm i -D eslint @rocketseat/eslint-config
+```
+- Crie o arquivo `.eslintrc.json` na raiz do projeto, onde ficarão as configurações
+- Instale a extensão `ESLint` (Publisher Microsoft) no VS Code
+
 ## Como Executar
 
 - Crie uma pasta para o projeto
