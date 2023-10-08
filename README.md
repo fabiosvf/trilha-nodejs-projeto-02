@@ -42,6 +42,10 @@ $ npx tsx src/server.ts
 ```
 $ npm i fastify
 ```
+- Para trabalhar com cookies e, por exemplo, poder registrar a sessão de um usuário, será necessário instalar a lib / plugin `@fastify/cookie` como dependência de produção. Para isso, digite o comando:
+```
+$ npm i @fastify/cookie
+```
 
 ## Configurando o Eslint
 - Para instalar as libs `eslint` e `@rocketseat/eslint-config` (pré set de configurações da Rocketseat) como dependência de desenvolvimento, digite o comando:
