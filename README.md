@@ -111,6 +111,27 @@ $ npm i zod
 ```
 - Neste primeiro momento iremos utilizar a validação no arquivo `./src/env/index.ts`
 
+## Trabalhando com Testes Automatizados
+- Site Oficial do Vitest [https://vitest.dev/]
+  - _Compatível com Jest, ESM, TypeScript e JSX. Além disso a configuração do Vitest é muito mais simples do que o Jest._
+- Instale a lib `vitest` como dependência de desenvolvimento, para isso digite o comando:
+```
+$ npm i vitest -D
+```
+- Os testes devem ser implementados na pasta `test` criada na raiz do projeto
+- Os arquivos de teste devem terminar com o nome e extensão `.spec.ts`
+- Para executar os testes, basta digitar o comando:
+```
+$ npx vitest
+```
+- Com os testes em execução, basta pressionar a tecla `A` no terminal para que os testes possam ser executados novamente.
+- Outra forma de executar os testes é configurar um novo `script` no `package.json` e chamado da seguinte forma:
+```
+$ npm run test
+ou
+$ npm test
+```
+
 ## Como Executar
 
 - Crie uma pasta para o projeto
