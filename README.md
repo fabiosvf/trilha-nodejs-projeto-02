@@ -132,6 +132,13 @@ ou
 $ npm test
 ```
 
+### Trabalhando com a lib Supertest
+- A bibliteca `supertest` serve para fazer requisições, seja utilizando as libs `fastify`, `express`, ou qualquer outra para uso nos testes, sem precisar necessariamente colocar uma aplicação no ar. Neste caso, não é necessário executar o método `listen` e especificar uma porta para subir um serviço.
+- Para instalar a lib `supertest` como dependência de desenvolvimento juntamente com o pacote de tipos do typescript `@types/supertest`, digite o comando:
+```
+$ npm i supertest @types/supertest -D
+```
+
 ## Como Executar
 
 - Crie uma pasta para o projeto
