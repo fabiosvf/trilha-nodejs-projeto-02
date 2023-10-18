@@ -139,6 +139,56 @@ $ npm test
 $ npm i supertest @types/supertest -D
 ```
 
+### Métodos do Vitest
+- `describe`: Permite definir uma categorização para os testes. É possível definir subcategorias.
+```ts
+describe('Descrição da Categoria do Teste', () => {
+  // Implementar os teste e/ou outra categorização
+  describe('Descrição da SubCategoria do Teste', () => {
+    // Implementar os teste e/ou outra categorização
+  });
+});
+```
+- `beforeAll`: Executa antes de todos os testes disponíveis a partir do nível que foi implementado. É recomendado utilizar `async` e `await` sempre que possível.
+```ts
+beforeAll(async () => {
+  await () => {
+    // Implementar rotina aqui
+  }
+});
+```
+- `afterAll`: Executa após todos os testes disponíveis a partir do nível que foi implementado. É recomendado utilizar `async` e `await` sempre que possível.
+```ts
+afterAll(async () => {
+  await () => {
+    // Implementar rotina aqui
+  }
+});
+```
+- `it`: Descreve o teste a ser implementado.
+```ts
+it('Descrição do teste a ser realizado', async () => {
+  // Implemente o teste aqui
+});
+```
+- `it.todo`: Definie previamente a descrição de um teste, e o coloca em uma lista de atividades para fazer depois.
+```ts
+it('Descrição do teste a ser implementado posteriormente');
+```
+- `it.only`: Define um teste para ser executado com exclusividade, os demais teste que não possuem essa atribuição, ficarão suspensos.
+```ts
+it.only('Descrição do teste a ser realizado', async () => {
+  // Implemente o teste aqui
+});
+```
+- `it.skip`: Ignora o teste que possui a implementação desse método.
+```ts
+it.skip('Descrição do teste a ser implementado, o mesmo ficará suspenso', async () => {
+  // Implemente o teste aqui
+});
+```
+
+
 ## Como Executar
 
 - Crie uma pasta para o projeto
