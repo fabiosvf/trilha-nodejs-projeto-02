@@ -125,7 +125,7 @@ $ npm i vitest -D
 $ npx vitest
 ```
 - Com os testes em execução, basta pressionar a tecla `A` no terminal para que os testes possam ser executados novamente.
-- Outra forma de executar os testes é configurar um novo `script` no `package.json` e chamado da seguinte forma:
+- Outra forma de executar os testes é configurar um novo `script` no `package.json` e chamá-lo da seguinte forma:
 ```
 $ npm run test
 ou
@@ -171,11 +171,11 @@ it('Descrição do teste a ser realizado', async () => {
   // Implemente o teste aqui
 });
 ```
-- `it.todo`: Definie previamente a descrição de um teste, e o coloca em uma lista de atividades para fazer depois.
+- `it.todo`: Define previamente a descrição de um teste, e o coloca em uma lista de atividades para fazer depois.
 ```ts
 it('Descrição do teste a ser implementado posteriormente');
 ```
-- `it.only`: Define um teste para ser executado com exclusividade, os demais teste que não possuem essa atribuição, ficarão suspensos.
+- `it.only`: Define um teste para ser executado com exclusividade, os demais testes que não possuem essa atribuição, ficarão suspensos.
 ```ts
 it.only('Descrição do teste a ser realizado', async () => {
   // Implemente o teste aqui
@@ -187,7 +187,6 @@ it.skip('Descrição do teste a ser implementado, o mesmo ficará suspenso', asy
   // Implemente o teste aqui
 });
 ```
-
 
 ## Como Executar
 
