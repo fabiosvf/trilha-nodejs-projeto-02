@@ -5,7 +5,7 @@ export default defineConfig((options: Options) => {
   return {
     external: [
       'better-sqlite3',
-      'pg',
+      // 'pg',
       'mysql2',
       'mysql',
       'tedious',

@@ -189,6 +189,8 @@ it.skip('Descrição do teste a ser implementado, o mesmo ficará suspenso', asy
 ```
 
 ## Fazendo o Deploy da Aplicação
+
+### Convertendo o código TypeScript em JavaScript
 - Em um primeiro momento é necessário entender que o código TypeScript não pode ser 
 O primeiro passo para conseguirmos fazer o deploy da nossa aplicação é entender que o nosso código está em TypeScript e nenhuma plataforma de Deploy de Node vai entender o código escrito em TypeScript. Então será necessário converter o código TypeScript em JavaScript.
 - Para isso, vamos começar instalando a lib `tsup` como dependência de desenvolvimento. Digite o comando:
@@ -248,6 +250,33 @@ export default defineConfig((options: Options) => {
   },
 }
 ```
+
+### Publicando a aplicação em um Servidor de Hospedagem
+- Existem muitas plataformas para realizarmo o deploy da nossa aplicação backend. Segue abaixo algumas delas:
+  - Render [https://render.com/]
+  - Fly.io [https://fly.io/]
+  - Railway [https://railway.app/]
+  - Vercel [https://vercel.com/]
+- Neste caso vamos utilizar a plataforma da Render. Crie um usuário na plataforma, e para facilitar o processo, pode utilizar a conta do GitHub
+- O próximo passo é criar um banco de dados, no entanto, o único banco de dados aceito pela plataforma da Render, é o Postgres, e durante o desenvolvimento utilizamos o SQLite. De qualquer forma, isso não é um problema pois utilizamos a lib `knex` para nos conectarmos com o database, então esse processo de migração de um tipo de banco de dados para outro é totalmente transparente.
+- Por dentro da plataforma clique na opção para adicionar um novo Banco de Dados `Postgres` e informe os seguintes parâmetros:
+  - Name: ignite-nodejs-02-db
+  - Region: Ohio (US East)
+  - Instance Type: Free
+  - Por fim, clique no botão `Create Database`
+  - É importante ressaltar que a versão gratuita do Banco de Dados expira em 90 dias e é deletado automaticamente.
+- Para ajustar a aplicação de forma a manter a compatibilidade entre o SQLite (no modo de desenvolvimento) e o Postgress (no ambiente da Render) será necessário a realização de alguns ajustes na aplicação
+  - No arquivo `src/env/index.ts`, utilizando a lib `zod`, crie um enumerator para o parâmetro `DATABASE_CLIENT` com as opções `sqlite` e `pg`. Vai ficar assim: `DATABASE_CLIENT: z.enum(['sqlite', 'pg'])`
+  - No arquivo `env` na raiz do projeto, crie o parâmetro `DATABASE_CLIENT`
+- Para garantir que, no ambiente da Render, a aplicação utilize o Node à partir da versão 18, será necessário adicionar o parâmetro `engine` no arquivo `package.json`, conforme o código abaixo:
+```json
+{
+  "engines": {
+    "node": ">=18"
+  },
+}
+```
+
 
 ## Como Executar
 
