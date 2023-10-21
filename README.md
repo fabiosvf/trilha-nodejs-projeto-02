@@ -188,6 +188,67 @@ it.skip('Descrição do teste a ser implementado, o mesmo ficará suspenso', asy
 });
 ```
 
+## Fazendo o Deploy da Aplicação
+- Em um primeiro momento é necessário entender que o código TypeScript não pode ser 
+O primeiro passo para conseguirmos fazer o deploy da nossa aplicação é entender que o nosso código está em TypeScript e nenhuma plataforma de Deploy de Node vai entender o código escrito em TypeScript. Então será necessário converter o código TypeScript em JavaScript.
+- Para isso, vamos começar instalando a lib `tsup` como dependência de desenvolvimento. Digite o comando:
+```
+$ npm i tsup -D
+```
+- Segue o link do site oficial da lib `tsup`
+  - [https://tsup.egoist.dev/]
+- Para buildar o nosso projeto, convertendo o código TypeScript para JavaScript, abra o arquivo `package.json`, localize a sessão `scripts` e crie um novo script chamado `build`. Segue trecho do `json`:
+```json
+{
+  "scripts": {
+    "build": "tsup src -d build"
+  },
+}
+```
+- Após isso, digite o seguinte comando no terminal:
+```
+$ npm run build
+```
+- Se durante o build apresentar uma mensagem de erro semelhante ao que informei abaixo, será necessário criar um arquivo de configuração na raiz do projeto, com o nome `tsup.config.ts` informando os paths que apresentaram problema. Segue o exemplo da mensagem de erro:
+```
+X [ERROR] Could not resolve "better-sqlite3"
+
+    node_modules/knex/lib/dialects/better-sqlite3/index.js:7:19:
+      7 │     return require('better-sqlite3');
+        ╵                    ~~~~~~~~~~~~~~~~
+
+  You can mark the path "better-sqlite3" as external to exclude it from the bundle, which will
+  remove this error. You can also surround this "require" call with a try/catch block to handle this       
+  failure at run-time instead of bundle-time.
+```
+- No meu caso, apareceu a mensagem de erro para os seguintes paths: `better-sqlite3`, `pg`, `mysql2`, `mysql`, `tedious`, `oracledb`, `pg-query-stream`. Segue o modelo do arquivo `tsup.config.ts`:
+```ts
+// tsup.config.ts
+import { defineConfig, Options } from 'tsup';
+
+export default defineConfig((options: Options) => {
+  return {
+    external: [
+      'better-sqlite3',
+      'pg',
+      'mysql2',
+      'mysql',
+      'tedious',
+      'oracledb',
+      'pg-query-stream',
+    ],
+  };
+});
+```
+- Após a criação do arquivo de configuração, modifique o script `build` no arquivo `package.json` com a seguinte linha de comando:
+```json
+{
+  "scripts": {
+    "build": "tsup src -d build --config tsup.config.ts"
+  },
+}
+```
+
 ## Como Executar
 
 - Crie uma pasta para o projeto
