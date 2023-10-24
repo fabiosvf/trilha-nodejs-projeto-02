@@ -293,6 +293,8 @@ export default defineConfig((options: Options) => {
     - Auto-Deploy: Yes
   - Para finalizar, clique no botão `Create Web Service`
 
+### Informações adicionais
+- Caso precise acessar o banco de dados Postgres do Servidor de Hospeddagem a partir da aplicação rodando na sua máquina local, ou até utilizando um gerenciador de banco de dados como o `DBeaver` ou até mesmo o `Postbird`, utilize o parâmetro `External Database URL` (fornecido pelo Render na área de configurações do Banco de Dados) e acrescente o parâmetro `?ssl=true` ao final da URL
 
 ## Como Executar
 
