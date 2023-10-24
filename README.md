@@ -191,8 +191,7 @@ it.skip('Descrição do teste a ser implementado, o mesmo ficará suspenso', asy
 ## Fazendo o Deploy da Aplicação
 
 ### Convertendo o código TypeScript em JavaScript
-- Em um primeiro momento é necessário entender que o código TypeScript não pode ser 
-O primeiro passo para conseguirmos fazer o deploy da nossa aplicação é entender que o nosso código está em TypeScript e nenhuma plataforma de Deploy de Node vai entender o código escrito em TypeScript. Então será necessário converter o código TypeScript em JavaScript.
+- O primeiro passo para conseguirmos fazer o deploy da nossa aplicação é entender que o nosso código está em TypeScript e nenhuma plataforma de Deploy de Node vai entender o código escrito em TypeScript. Então será necessário converter o código TypeScript em JavaScript.
 - Para isso, vamos começar instalando a lib `tsup` como dependência de desenvolvimento. Digite o comando:
 ```
 $ npm i tsup -D
@@ -251,7 +250,7 @@ export default defineConfig((options: Options) => {
 }
 ```
 
-### Publicando a aplicação em um Servidor de Hospedagem
+### Preparando o ambiente no Servidor de Hospedagem para publicação da aplicação
 - Existem muitas plataformas para realizarmo o deploy da nossa aplicação backend. Segue abaixo algumas delas:
   - Render [https://render.com/]
   - Fly.io [https://fly.io/]
@@ -276,6 +275,23 @@ export default defineConfig((options: Options) => {
   },
 }
 ```
+
+### Publicando a aplicação no Servidor de Hospedagem
+- Na plataforma Render, na área onde contém todas as informações do banco de dados postgres recém criado, no meu caso, `ignite-nodejs-02-db`, copie o parâmetro `Internal Database URL`
+- Clique na opção para criar um `Static Site`, e no campo `Connect a repository` digite o nome do repositório que deseja publicar, no meu caso, `trilha-nodejs-projeto-02`, e clique em `Connect`
+  - Caso o repositório informado não esteja disponível, talvez seja necessário dar as devidas permissões no GitHub
+  - Para fazer isso, acesse o GitHub do seu repositório, vá em `Settings`, em seguida, na lateral esquerda, localize o grupo `Integrations` e em seguida clique em `Applications`. Na aba `Installed GitHub Apps` localize a `Render` e clique no botão `Configure`. Na área `Repository access` é possível selecionar `All repositories` ou `Only select repositories`. No meu caso, vou selecionar a segunda opção para selecionar apenas o repositório que quero publicar. Para finalizar essa parte clique em `Save`. Volte para o `Render` o repita o procedimento para selecionar o repositório.
+- Preencha as seguintes informações:
+  - Name: ignite-nodejs-02-api
+  - Branch: main
+  - Build Command: `npm install && npm run knex -- migrate:latest && npm run build`
+  - Publish directory: `node build/server.js`
+  - Advanced
+    - Clique no botão `Add Environment Variable` para criar duas variáveis de ambiente:
+      - DATABASE_CLIENT: pg
+      - DATABASE_URL: [Cole aqui o parâmetro copiado em `Internal Database URL`]
+    - Auto-Deploy: Yes
+  - Para finalizar, clique no botão `Create Web Service`
 
 
 ## Como Executar
